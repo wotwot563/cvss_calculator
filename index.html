@@ -54,14 +54,18 @@
 <input id="vectorstr">
         <input id="submittens" type="button" onclick="newvector()"/>
     </div>
+    <div>
+        <p id="outvector"> Current Vector string</p>
+    </div>
     <footer id="footer">
-Copyright 2019 © Chandan
+Copyright 2022 © wotwot563
 <br/><a href="https://github.com/cvssjs">CVSSjs</a> is free to use, copy, modification under a BSD like licence.
 <br/>Common Vulnerability Scoring System (CVSS) is a free and open standard. It is owned and managed by <a href="http://www.first.org/cvss">FIRST.Org</a>.</footer>
     <script>
         var c = new CVSS("cvssboard", {
             onchange: function() {
                 window.location.hash = c.get().vector;
+                document.getElementById("outvector").value = c.get().vector.substring(9);
                 c.vector.setAttribute('href', '#' + c.get().vector)
             }
         });
